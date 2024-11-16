@@ -8,6 +8,9 @@ module.exports = {
       fontFamily: {
         nixie: ['"Nixie One"', 'monospace'],
       },
+      borderRadius: {
+        '50%_50%': '50% 50%', // For creating an elliptical bottom.
+      },
     },
   },
   plugins: [],
