@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import NixieClock from './components/NixieClock';
 import {darkTheme, getDefaultConfig, RainbowKitProvider} from "@rainbow-me/rainbowkit";
 import {base} from "viem/chains";
@@ -23,13 +23,39 @@ const App: React.FC = () => {
   const maxTickets = 10000;  // TODO: Get this from the contract
   const totalRounds = Math.floor(Math.log2(maxTickets) + 1);
   const [round, setRound] = React.useState<undefined | number>();
+  const [showExplosion, setShowExplosion] = useState(false);
+
+  // Handle when the timer reaches zero
+  const handleTimerEnd = () => {
+    setShowExplosion(true);
+    setTimeout(() => {
+      setShowExplosion(false);
+    }, 3000); // Explosion fades out after 5 seconds
+  };
+
+  useEffect(() => {
+    handleTimerEnd();
+  }, []);
 
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider theme={darkTheme()}>
-          <div
-            className="relative min-h-screen bg-black text-white flex flex-col items-center justify-center font-mono overflow-hidden">
+          <div className="relative min-h-screen bg-black text-white flex flex-col items-center justify-center font-mono overflow-hidden">
+
+            {/* Nuclear Explosion Overlay */}
+            {showExplosion && (
+              <div
+                className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-90 z-50 transition-opacity duration-1000"
+                style={{animation: "fadeOut 5s forwards"}}
+              >
+                <img
+                  src="nuke.gif"
+                  alt="Placeholder"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
 
             {/* Top-right Connect Button */}
             <nav className="absolute top-0 left-0 right-0 p-4 flex justify-between ">
