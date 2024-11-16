@@ -1,5 +1,6 @@
+// NixieClock.tsx
 import React, { useState, useEffect } from 'react';
-import NixieDigit from './NixieDigit';
+import NixieUnit from './NixieUnit';
 
 interface NixieClockProps {
   targetDate: string | Date;
@@ -44,22 +45,14 @@ const NixieClock: React.FC<NixieClockProps> = ({ targetDate }) => {
   const { days, hours, minutes, seconds } = timeLeft;
 
   return (
-    <div className="flex space-x-2">
-      {/* Days */}
-      <NixieDigit value={days[0]} label="Days" />
-      <NixieDigit value={days[1]} />
-      <div className="flex items-center justify-center text-5xl text-yellow-400">:</div>
-      {/* Hours */}
-      <NixieDigit value={hours[0]} label="Hours"/>
-      <NixieDigit value={hours[1]} />
-      <div className="flex items-center justify-center text-5xl text-yellow-400">:</div>
-      {/* Minutes */}
-      <NixieDigit value={minutes[0]} label="Minutes"/>
-      <NixieDigit value={minutes[1]} />
-      <div className="flex items-center justify-center text-5xl text-yellow-400">:</div>
-      {/* Seconds */}
-      <NixieDigit value={seconds[0]} label="Seconds"/>
-      <NixieDigit value={seconds[1]} />
+    <div className="flex items-center space-x-4">
+      <NixieUnit digits={days} label="Days" />
+      <div className="text-5xl font-nixie text-yellow-400">:</div>
+      <NixieUnit digits={hours} label="Hours" />
+      <div className="text-5xl font-nixie text-yellow-400">:</div>
+      <NixieUnit digits={minutes} label="Minutes" />
+      <div className="text-5xl font-nixie text-yellow-400">:</div>
+      <NixieUnit digits={seconds} label="Seconds" />
     </div>
   );
 };
