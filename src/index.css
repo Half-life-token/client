@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Nixie+One&display=swap');
 
 body {
-    font-family: 'Nixie One', 'Special Elite', monospace;
+  font-family: 'Nixie One', 'Special Elite', monospace;
 }
 
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 @tailwind base;
@@ -16,63 +16,78 @@ body {
 
 /* Nixie Number Glow */
 .nixie-number {
-    text-shadow:
-            0 0 3px rgba(255, 165, 0, 0.7),
-            0 0 10px rgba(255, 140, 0, 0.9),
-            0 0 20px rgba(255, 69, 0, 1),
-            0 0 30px rgba(255, 69, 0, 1);
+  text-shadow:
+    0 0 3px rgba(255, 165, 0, 0.7),
+    0 0 10px rgba(255, 140, 0, 0.9),
+    0 0 20px rgba(255, 69, 0, 1),
+    0 0 30px rgba(255, 69, 0, 1);
 }
 
 /* Nixie Glow */
 .nixie-glow {
-    background: radial-gradient(circle, rgba(255, 69, 0, 0.6), transparent 70%);
-    mix-blend-mode: screen;
-    animation: flicker 2s infinite alternate ease-in-out;
+  background: radial-gradient(circle, rgba(255, 69, 0, 0.6), transparent 70%);
+  mix-blend-mode: screen;
+  animation: flicker 2s infinite alternate ease-in-out;
 }
 
 /* Nixie Reflection */
 .nixie-reflection {
-    background:
-            radial-gradient(circle at left, rgba(255, 69, 0, 0.3), transparent 70%),
-            radial-gradient(circle at right, rgba(255, 69, 0, 0.3), transparent 70%);
-    mix-blend-mode: screen;
-    animation: flicker 2s infinite alternate ease-in-out;
+  background:
+    radial-gradient(circle at left, rgba(255, 69, 0, 0.3), transparent 70%),
+    radial-gradient(circle at right, rgba(255, 69, 0, 0.3), transparent 70%);
+  mix-blend-mode: screen;
+  animation: flicker 2s infinite alternate ease-in-out;
 }
 
 /* Flicker Animation */
 @keyframes flicker {
-    0% {
-        opacity: 0.7;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.02);
-    }
-    100% {
-        opacity: 0.8;
-        transform: scale(1);
-    }
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
 }
 
 .ticketMarquee {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.ticketRow {
+  display: flex;
+  animation: scroll 20s linear infinite;
+  /* Duplicate the content to ensure seamless looping */
+  width: calc(200px * 10 * 2);
+  /* Adjust according to ticket width and count */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
   }
-  
-  .ticketRow {
-    display: flex;
-    animation: scroll 20s linear infinite;
-    /* Duplicate the content to ensure seamless looping */
-    width: calc(200px * 10 * 2); /* Adjust according to ticket width and count */
+
+  100% {
+    transform: translateX(-50%);
   }
-  
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
+}
+
+.marquee-item {
+  height: 160px;
+  max-height: 160px;
+  width: 400px;
+  max-width: 400px;
+  /* Ensure all tickets have the same width */
+  flex-shrink: 0;
+  /* Prevent the tickets from shrinking */
+  margin-right: 20px;
+}

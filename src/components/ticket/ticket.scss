@@ -1,29 +1,31 @@
-
-
 /* Main Ticket Style */
 .ticketContainer {
-  width: 400px; /* Ensure all tickets have the same width */
-  flex-shrink: 0; /* Prevent the tickets from shrinking */
-  margin-right: 20px; /* Space between tickets */
+    height: 160px;
+    width: 400px;
+    /* Ensure all tickets have the same width */
+    flex-shrink: 0;
+
 }
-  
-  /* Keyframe Animation for Moving Left to Right */
-  @keyframes moveLeftRight {
+
+/* Keyframe Animation for Moving Left to Right */
+@keyframes moveLeftRight {
     0% {
-      transform: translateX(-100%);
+        transform: translateX(-100%);
     }
+
     100% {
-      transform: translateX(100%);
+        transform: translateX(100%);
     }
-  }
-  
-.ticket{
+}
+
+.ticket {
     animation: bouncingCard 0.6s ease-out infinite alternate;
     background-color: white;
     color: darkslategray;
     border-radius: 12px;
 }
-.ticketShadow{
+
+.ticketShadow {
     animation: bouncingShadow 0.6s ease-out infinite alternate;
     margin-top: 4px;
     width: 95%;
@@ -34,48 +36,55 @@
 }
 
 /* Ticket Content */
-.ticketTitle{
+.ticketTitle {
     font-size: 1.5rem;
     font-weight: 700;
     padding: 12px 16px 4px;
 }
-hr{
+
+hr {
     width: 90%;
     border: 1px solid #efefef;
 }
-.ticketDetail{
+
+.ticketDetail {
     font-size: 1.1rem;
     font-weight: 500;
     padding: 4px 16px;
 }
-.ticketSubDetail{
+
+.ticketSubDetail {
     display: flex;
     justify-content: space-between;
     font-size: 1rem;
     padding: 12px 16px;
 }
-.ticketSubDetail .code{
+
+.ticketSubDetail .code {
     margin-right: 24px;
 }
 
 /* Ticket Ripper */
-.ticketRip{
+.ticketRip {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.circleLeft{
+
+.circleLeft {
     width: 12px;
     height: 24px;
     background-color: #B7B5E4;
     border-radius: 0 12px 12px 0;
 }
-.ripLine{
+
+.ripLine {
     width: 100%;
     border-top: 3px solid #B7B5E4;
-    border-top-style: dashed ;
+    border-top-style: dashed;
 }
-.circleRight{
+
+.circleRight {
     width: 12px;
     height: 24px;
     background-color: #B7B5E4;
