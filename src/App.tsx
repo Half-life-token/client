@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import NixieClock from './components/NixieClock';
 import {ConnectButton, darkTheme, getDefaultConfig, RainbowKitProvider} from "@rainbow-me/rainbowkit";
 import {base} from "viem/chains";
@@ -6,7 +6,12 @@ import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {WagmiProvider} from "wagmi";
 
 import '@rainbow-me/rainbowkit/styles.css';
+import '@uniswap/widgets/fonts.css'
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/700.css';
+
 import TicketPurchase from "./components/TicketPurchase.tsx";
+import {SwapWidget} from "@uniswap/widgets";
 
 const config = getDefaultConfig({
   appName: 'Half Life',
@@ -18,6 +23,8 @@ const config = getDefaultConfig({
 const queryClient = new QueryClient();
 
 const App: React.FC = () => {
+  const [isRoundStarted, setIsRoundStarted] = useState(false);
+
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
@@ -37,9 +44,17 @@ const App: React.FC = () => {
             </header>
             <NixieClock targetDate="2022-12-31T23:59:59" />
 
-            <div className="p-8 bg-gray-900 rounded-xl border-2 border-gray-700 shadow-2xl">
-              <TicketPurchase/>
-            </div>
+            {isRoundStarted && (
+              <div className="p-8 bg-gray-900 rounded-xl border-2 border-gray-700 shadow-2xl">
+                <TicketPurchase/>
+              </div>
+            ) || (
+              <div className="Uniswap">
+                <SwapWidget />
+              </div>
+            )
+            }
+
           </div>
         </RainbowKitProvider>
       </QueryClientProvider>
