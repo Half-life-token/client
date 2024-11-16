@@ -10,6 +10,7 @@ import { Connect } from './components/connect/connect.tsx';
 import Ticket from './components/ticket/ticket.tsx';
 import Marquee from "react-fast-marquee";
 import { Hogwarts } from './components/hogwarts/hogwarts.tsx';
+import TicketPurchase from "./components/TicketPurchase.tsx";
 
 const config = getDefaultConfig({
   appName: 'Half Life',
@@ -85,6 +86,8 @@ const App: React.FC = () => {
 
               {/* Spacer to take up available space */}
               <div className="flex-grow"></div>
+
+              <TicketPurchase />
 
               {/* Bottom Content: Marquee Tickets */}
               <div className="w-full pb-4">
