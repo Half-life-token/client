@@ -1,15 +1,16 @@
 import React from 'react';
 import NixieClock from './components/NixieClock';
-import {darkTheme, getDefaultConfig, RainbowKitProvider} from "@rainbow-me/rainbowkit";
-import {base} from "viem/chains";
-import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
-import {WagmiProvider} from "wagmi";
+import { darkTheme, getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { base } from "viem/chains";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { WagmiProvider } from "wagmi";
 
 import '@rainbow-me/rainbowkit/styles.css';
 import { Connect } from './components/connect/connect.tsx';
 import Ticket from './components/ticket/ticket.tsx';
 import Marquee from "react-fast-marquee";
 import { Hogwarts } from './components/hogwarts/hogwarts.tsx';
+
 const config = getDefaultConfig({
   appName: 'Half Life',
   projectId: '912b450f0d2d4845bef672f964e75292',
@@ -29,39 +30,43 @@ const App: React.FC = () => {
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider theme={darkTheme()}>
           <div
-            className="relative min-h-screen bg-black text-white flex flex-col items-center justify-center font-mono overflow-hidden">
-
-            {/* Top-right Connect Button */}
-            <nav className="absolute top-0 left-0 right-0 p-4 flex justify-between ">
-              <h1 className="text-9xl sm:text-9xl font-bold tracking-widest text-white">
+  className="min-h-screen bg-black bg-custom-bg bg-fixed text-white flex flex-col font-mono overflow-hidden"
+  style={{ backgroundSize: '100% 135%', backgroundPosition: '260px top' }}
+>
+            {/* Header with Logo and Connect Button */}
+            <nav className="w-full p-4 flex justify-between">
+              <h1
+                style={{ WebkitTextStroke: '2px #2e2e2e' }}
+                className="text-5xl sm:text-9xl font-bold tracking-widest text-white"
+              >
                 HΔLFLΨFE
               </h1>
               <Connect />
             </nav>
 
-            <header className="relative z-10 text-center mb-12">
-              <span className="text-xl font-bold text-gray-400">
-                  {round
-                    && <p>Round {round} / {totalRounds}</p>
-                    || <p>Starting soon...</p>
-                  }
-              </span>
-            </header>
-            <div className='scale-75'>
-              <NixieClock targetDate="2025-12-31T23:59:59" />
-            </div>
-            <p className="text-xl tracking-wide text-gray-300">
-              left until nuclear decay
-            </p>
+            {/* Main Content */}
+            <main className="flex flex-col flex-grow justify-between">
+              {/* Top Content: Nixie Clock */}
+              <div className="flex flex-col pl-4 ">
+                <div className="scale-75 origin-top-left" style={{ transformOrigin: 'top-left' }}>
+                  <NixieClock targetDate="2025-12-31T23:59:59" />
+                </div>
+                <p className="text-xl tracking-wide text-gray-300 pl-4 ">
+                  left until nuclear decay
+                </p>
+              </div>
 
-            <Marquee className='mt-12' play={true} autoFill={true}>
-              <Hogwarts />
-              <Ticket />
+              {/* Spacer to take up available space */}
+              <div className="flex-grow"></div>
 
-
-
-
-            </Marquee>
+              {/* Bottom Content: Marquee Tickets */}
+              <div className="w-full pb-4">
+                <Marquee play={true} autoFill={true}>
+                  <Hogwarts />
+                  <Ticket />
+                </Marquee>
+              </div>
+            </main>
           </div>
         </RainbowKitProvider>
       </QueryClientProvider>

@@ -44,7 +44,7 @@ const NixieClock: React.FC<NixieClockProps> = ({ targetDate }) => {
   const { days, hours, minutes, seconds } = timeLeft;
 
   return (
-    <div className="flex items-center flex-wrap justify-center space-x-4">
+    <div className="flex flex-wrap space-x-4 origin-top-left">
       <NixieUnit digits={days} label="Days" />
       <div className="text-5xl font-nixie text-yellow-400 self-center">:</div>
       <NixieUnit digits={hours} label="Hours" />
