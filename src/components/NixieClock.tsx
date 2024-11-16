@@ -44,14 +44,24 @@ const NixieClock: React.FC<NixieClockProps> = ({ targetDate }) => {
   const { days, hours, minutes, seconds } = timeLeft;
 
   return (
-    <div className="flex items-center flex-wrap justify-center space-x-4">
-      <NixieUnit digits={days} label="Days" />
-      <div className="text-5xl font-nixie text-yellow-400 self-center">:</div>
-      <NixieUnit digits={hours} label="Hours" />
-      <div className="text-5xl font-nixie text-yellow-400 self-center">:</div>
-      <NixieUnit digits={minutes} label="Minutes" />
-      <div className="text-5xl font-nixie text-yellow-400 self-center">:</div>
-      <NixieUnit digits={seconds} label="Seconds" />
+    <div className="flex flex-col items-center">
+      {/* Nixie Clock */}
+      <div className="flex items-center space-x-4">
+        <NixieUnit digits={days} label="Days" />
+        <div className="text-5xl font-nixie text-yellow-400 self-center">:</div>
+        <NixieUnit digits={hours} label="Hours" />
+        <div className="text-5xl font-nixie text-yellow-400 self-center">:</div>
+        <NixieUnit digits={minutes} label="Minutes" />
+        <div className="text-5xl font-nixie text-yellow-400 self-center">:</div>
+        <NixieUnit digits={seconds} label="Seconds" />
+      </div>
+
+      {/* Image Below */}
+      <img
+        src="/soviet.png"
+        alt="Soviet Control Board"
+        className="object-contain max-w-7.5xl pl-44 pr-44"
+      />
     </div>
   );
 };

@@ -11,6 +11,9 @@ module.exports = {
       borderRadius: {
         '50%_50%': '50% 50%', // For creating an elliptical bottom.
       },
+      spacing: {
+        '7.5xl': '90rem'
+      }
     },
   },
   plugins: [],
