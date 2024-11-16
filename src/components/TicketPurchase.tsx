@@ -26,7 +26,7 @@ const TicketPurchase: React.FC = () => {
 
     try {
       sendTransaction({
-        to: 'YOUR_SMART_CONTRACT_ADDRESS', // Replace with your contract's address
+        to: '0xA17471DEA98083f5D3F36B04730C380F417D9CFD', // Replace with your contract's address
         value: totalPrice,
       });
     } catch (error: any) {
