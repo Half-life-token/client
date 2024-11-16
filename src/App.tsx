@@ -8,6 +8,7 @@ import {WagmiProvider} from "wagmi";
 import '@rainbow-me/rainbowkit/styles.css';
 import TicketPurchase from "./components/TicketPurchase.tsx";
 import { Connect } from './components/connect/connect.tsx';
+import Ticket from './components/ticket/ticket.tsx';
 
 const config = getDefaultConfig({
   appName: 'Half Life',
@@ -36,11 +37,16 @@ const App: React.FC = () => {
                 The countdown to the next elimination round begins!
               </p>
             </header>
+            <div className='scale-75'>
             <NixieClock targetDate="2025-12-31T23:59:59" />
-
-            <div className="p-8 bg-gray-900 rounded-xl border-2 border-gray-700 shadow-2xl">
-              <TicketPurchase/>
             </div>
+            
+
+            {/* <div className="p-8 bg-gray-900 rounded-xl border-2 border-gray-700 shadow-2xl">
+              <TicketPurchase/>
+            </div> */}
+
+            <Ticket />
           </div>
         </RainbowKitProvider>
       </QueryClientProvider>
