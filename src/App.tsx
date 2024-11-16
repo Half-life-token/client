@@ -1,12 +1,11 @@
 import React from 'react';
 import NixieClock from './components/NixieClock';
-import {ConnectButton, darkTheme, getDefaultConfig, RainbowKitProvider} from "@rainbow-me/rainbowkit";
+import {darkTheme, getDefaultConfig, RainbowKitProvider} from "@rainbow-me/rainbowkit";
 import {base} from "viem/chains";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {WagmiProvider} from "wagmi";
 
 import '@rainbow-me/rainbowkit/styles.css';
-import TicketPurchase from "./components/TicketPurchase.tsx";
 import { Connect } from './components/connect/connect.tsx';
 import Ticket from './components/ticket/ticket.tsx';
 import Marquee from "react-fast-marquee";
@@ -40,7 +39,6 @@ const App: React.FC = () => {
             </nav>
 
             <header className="relative z-10 text-center mb-12">
-              <h1 className="text-6xl font-bold tracking-widest text-white">HΔLF LΨFE</h1>
               <span className="text-xl font-bold text-gray-400">
                   {round
                     && <p>Round {round} / {totalRounds}</p>
@@ -54,12 +52,6 @@ const App: React.FC = () => {
             <p className="text-xl tracking-wide text-gray-300">
               left until nuclear decay
             </p>
-
-
-
-            {/* <div className="p-8 bg-gray-900 rounded-xl border-2 border-gray-700 shadow-2xl">
-              <TicketPurchase/>
-            </div> */}
 
             <Marquee className='mt-12'>
               <Ticket />
