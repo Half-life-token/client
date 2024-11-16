@@ -13,9 +13,9 @@ const NixieUnit: React.FC<NixieUnitProps> = ({ digits, label }) => {
         <NixieDigit value={digits[0]}/>
         <NixieDigit value={digits[1]}/>
       </div>
-      <div className="mt-2 text-center text-sm uppercase tracking-widest">
+      {/* <div className="mt-2 text-center text-sm uppercase tracking-widest">
         {label}
-      </div>
+      </div> */}
     </div>
   );
 };

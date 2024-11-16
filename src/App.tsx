@@ -7,6 +7,7 @@ import {WagmiProvider} from "wagmi";
 
 import '@rainbow-me/rainbowkit/styles.css';
 import TicketPurchase from "./components/TicketPurchase.tsx";
+import { Connect } from './components/connect/connect.tsx';
 
 const config = getDefaultConfig({
   appName: 'Half Life',
@@ -26,7 +27,7 @@ const App: React.FC = () => {
 
             {/* Top-right Connect Button */}
             <div className="absolute top-4 right-4">
-              <ConnectButton />
+              <Connect />
             </div>
 
             <header className="relative z-10 text-center mb-12">
@@ -35,7 +36,7 @@ const App: React.FC = () => {
                 The countdown to the next elimination round begins!
               </p>
             </header>
-            <NixieClock targetDate="2022-12-31T23:59:59" />
+            <NixieClock targetDate="2025-12-31T23:59:59" />
 
             <div className="p-8 bg-gray-900 rounded-xl border-2 border-gray-700 shadow-2xl">
               <TicketPurchase/>
