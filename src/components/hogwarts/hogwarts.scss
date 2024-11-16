@@ -7,7 +7,8 @@ $border-color: #444;
 
 .hogwarts {
     transform: scale(0.5);
-    
+    transform-origin: top left;
+    padding-left: 30px;
     aside.context {
         text-align: center;
         color: #333;
@@ -59,7 +60,7 @@ $border-color: #444;
     }
 
     .main-content {
-        margin: 4em auto 0;
+
         width: 740px;
         text-transform: uppercase;
     }

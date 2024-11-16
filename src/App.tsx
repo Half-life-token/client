@@ -54,12 +54,13 @@ const App: React.FC = () => {
               left until nuclear decay
             </p>
 
-            <Marquee className='mt-12'>
+            <Marquee className='mt-12' play={true} autoFill={true}>
               <Hogwarts />
               <Ticket />
-              <Hogwarts />
-              <Ticket />
-              <Ticket />
+
+
+
+
             </Marquee>
           </div>
         </RainbowKitProvider>
