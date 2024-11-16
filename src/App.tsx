@@ -22,6 +22,15 @@ const config = getDefaultConfig({
 
 const queryClient = new QueryClient();
 
+// Fucked up hack to let Uniswap widgets know that a browser is, in fact, defined
+if (typeof window !== "undefined") {
+  // @ts-ignore
+  window.Browser = {
+    T: () => {
+    }
+  };
+}
+
 const App: React.FC = () => {
   const [isRoundStarted, setIsRoundStarted] = useState(false);
 
@@ -29,11 +38,12 @@ const App: React.FC = () => {
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider theme={darkTheme()}>
-          <div className="relative min-h-screen bg-black text-white flex flex-col items-center justify-center font-mono overflow-hidden">
+          <div
+            className="relative min-h-screen bg-black text-white flex flex-col items-center justify-center font-mono overflow-hidden">
 
             {/* Top-right Connect Button */}
             <div className="absolute top-4 right-4">
-              <ConnectButton />
+              <ConnectButton/>
             </div>
 
             <header className="relative z-10 text-center mb-12">
@@ -42,18 +52,18 @@ const App: React.FC = () => {
                 The countdown to the next elimination round begins!
               </p>
             </header>
-            <NixieClock targetDate="2022-12-31T23:59:59" />
+            <NixieClock targetDate="2022-12-31T23:59:59"/>
 
             {isRoundStarted && (
               <div className="p-8 bg-gray-900 rounded-xl border-2 border-gray-700 shadow-2xl">
                 <TicketPurchase/>
               </div>
-            ) || (
-              <div className="Uniswap">
-                <SwapWidget />
-              </div>
             )
             }
+
+            <div className="Uniswap">
+              <SwapWidget tokenList={'https://ipfs.io/ipns/tokens.uniswap.org'}/>
+            </div>
 
           </div>
         </RainbowKitProvider>
