@@ -43,12 +43,12 @@ const App: React.FC = () => {
         <RainbowKitProvider theme={darkTheme()}>
           <div
             className="min-h-screen bg-black bg-custom-bg bg-fixed text-white flex flex-col font-mono overflow-hidden"
-            style={{ backgroundSize: '100% 135%', backgroundPosition: '260px top' }}
+            style={{ backgroundSize: '100% 135%', backgroundPosition: '380px top' }}
           >
             {/* Header with Logo and Connect Button */}
             <nav className="w-full p-4 flex justify-between">
               <h1
-                style={{ WebkitTextStroke: '2px #2e2e2e' }}
+                style={{ WebkitTextStroke: '2px #00ff00' }}
                 className="text-5xl sm:text-9xl font-bold tracking-widest text-white"
               >
                 HΔLFLΨFE
@@ -74,19 +74,28 @@ const App: React.FC = () => {
             <main className="flex flex-col flex-grow justify-between">
               {/* Top Content: Nixie Clock */}
               <div className="flex flex-col pl-4 ">
-                <div className="scale-75 origin-top-left" style={{ transformOrigin: 'top-left' }}>
+                <div >
                   <NixieClock targetDate="2025-12-31T23:59:59" />
                 </div>
-                <p className="text-xl tracking-wide text-gray-300 pl-4 ">
+                <p className="text-xl tracking-wide text-gray-300 pl-2 mt-4 ">
                   left until nuclear decay
                 </p>
-                <Balance />
+                <div
+                  className='flex flex-row items-center justify-between pl-2 mt-4'
+                ><Balance /></div>
               </div>
 
               {/* Spacer to take up available space */}
               <div className="flex-grow"></div>
 
+              <div style={{
+                width: 780,
+                marginBottom: 20,
+                marginTop: 20,
+                marginLeft: 20,
+              }}>
               <TicketPurchase />
+              </div>
 
               {/* Bottom Content: Marquee Tickets */}
               <div className="w-full pb-4">

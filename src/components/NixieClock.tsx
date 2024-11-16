@@ -44,24 +44,32 @@ const NixieClock: React.FC<NixieClockProps> = ({ targetDate }) => {
   const { days, hours, minutes, seconds } = timeLeft;
 
   return (
-    <div className="flex flex-col items-center">
-      {/* Nixie Clock */}
-      <div className="flex items-center space-x-4">
+    <div className="relative w-full max-w-3xl"> {/* Adjust max-w as needed */}
+      {/* Clock Face Image */}
+      <img
+        src="/oscillo.jpg"
+        alt="Clock Oscilloscope"
+        className="w-full h-auto object-contain"
+      />
+
+      {/* Nixie Clock Overlay */}
+      <div className="absolute flex space-x-2 z-10 scale-40 "
+        style={{
+     /*      transformOrigin: 'top left', */
+          transform: 'scale(0.34)',
+          top: '32%',
+          right: '2%',
+        }}
+      >
+        {/* Decreased scale from scale-50 to scale-40 to make tubes smaller */}
         <NixieUnit digits={days} label="Days" />
-        <div className="text-5xl font-nixie text-yellow-400 self-center">:</div>
+        <div className="text-2xl font-nixie text-yellow-400 self-center">:</div> {/* Reduced from text-3xl to text-2xl */}
         <NixieUnit digits={hours} label="Hours" />
-        <div className="text-5xl font-nixie text-yellow-400 self-center">:</div>
+        <div className="text-2xl font-nixie text-yellow-400 self-center">:</div> {/* Reduced from text-3xl to text-2xl */}
         <NixieUnit digits={minutes} label="Minutes" />
-        <div className="text-5xl font-nixie text-yellow-400 self-center">:</div>
+        <div className="text-2xl font-nixie text-yellow-400 self-center">:</div> {/* Reduced from text-3xl to text-2xl */}
         <NixieUnit digits={seconds} label="Seconds" />
       </div>
-
-      {/* Image Below */}
-      <img
-        src="/soviet.png"
-        alt="Soviet Control Board"
-        className="object-contain max-w-7.5xl pl-44 pr-44"
-      />
     </div>
   );
 };
