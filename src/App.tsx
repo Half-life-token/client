@@ -11,7 +11,7 @@ const App: React.FC = () => {
         </p>
       </header>
       <div className="p-8 bg-gray-900 rounded-xl border-2 border-gray-700 shadow-2xl">
-        <NixieClock targetDate="2024-12-31T23:59:59" use3D={false} />
+        <NixieClock targetDate="2024-12-31T23:59:59" />
       </div>
     </div>
   );
