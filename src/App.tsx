@@ -20,33 +20,41 @@ const config = getDefaultConfig({
 const queryClient = new QueryClient();
 
 const App: React.FC = () => {
+  const maxTickets = 10000;  // TODO: Get this from the contract
+  const totalRounds = Math.floor(Math.log2(maxTickets) + 1);
+  const [round, setRound] = React.useState<undefined | number>();
+
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider theme={darkTheme()}>
-          <div className="relative min-h-screen bg-black text-white flex flex-col items-center justify-center font-mono overflow-hidden">
+          <div
+            className="relative min-h-screen bg-black text-white flex flex-col items-center justify-center font-mono overflow-hidden">
 
             {/* Top-right Connect Button */}
             <div className="absolute top-4 right-4">
-              <Connect />
+              <Connect/>
             </div>
 
             <header className="relative z-10 text-center mb-12">
               <h1 className="text-6xl font-bold tracking-widest text-white">HΔLF LΨFE</h1>
-              <p className="mt-4 text-xl tracking-wide text-gray-300">
-                The countdown to the next elimination round begins!
-              </p>
+              <span className="text-xl font-bold text-gray-400">
+                  {round
+                    && <p>Round {round} / {totalRounds}</p>
+                    || <p>Starting soon...</p>
+                  }
+              </span>
             </header>
             <div className='scale-75'>
-            <NixieClock targetDate="2025-12-31T23:59:59" />
+              <NixieClock targetDate="2025-12-31T23:59:59"/>
             </div>
-            
+
 
             {/* <div className="p-8 bg-gray-900 rounded-xl border-2 border-gray-700 shadow-2xl">
               <TicketPurchase/>
             </div> */}
 
-            <Ticket />
+            <Ticket/>
           </div>
         </RainbowKitProvider>
       </QueryClientProvider>
