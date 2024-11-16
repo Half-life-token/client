@@ -12,13 +12,14 @@ import Marquee from "react-fast-marquee";
 import { Hogwarts } from './components/hogwarts/hogwarts.tsx';
 import Balance from './components/balance/balance.tsx';
 import { halfconfig } from './halfconfig.ts';
+import TicketPurchase from "./components/TicketPurchase.tsx";
 
 
 
 const queryClient = new QueryClient();
 
 const App: React.FC = () => {
-  
+
   const maxTickets = 10000;  // TODO: Get this from the contract
   const totalRounds = Math.floor(Math.log2(maxTickets) + 1);
   const [round, setRound] = React.useState<undefined | number>();
@@ -84,6 +85,8 @@ const App: React.FC = () => {
 
               {/* Spacer to take up available space */}
               <div className="flex-grow"></div>
+
+              <TicketPurchase />
 
               {/* Bottom Content: Marquee Tickets */}
               <div className="w-full pb-4">
