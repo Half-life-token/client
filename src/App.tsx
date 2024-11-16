@@ -5,7 +5,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center font-mono">
       <header className="text-center mb-12">
-        <h1 className="text-6xl font-bold tracking-widest">Half Life</h1>
+        <h1 className="text-6xl font-bold tracking-widest">HΔLF LΨFE</h1>
         <p className="mt-4 text-xl tracking-wide">
           The countdown to the next elimination round begins!
         </p>
